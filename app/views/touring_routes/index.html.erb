@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Touring Routes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Touring name</th>
+      <th>Touring desc</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Start lat</th>
+      <th>Start lon</th>
+      <th>End lat</th>
+      <th>End lon</th>
+      <th>Wp1 lat</th>
+      <th>Wp1 lon</th>
+      <th>Wp2 lat</th>
+      <th>Wp2 lon</th>
+      <th>Wp3 lat</th>
+      <th>Wp3 lon</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @touring_routes.each do |touring_route| %>
+      <tr>
+        <td><%= touring_route.touring_name %></td>
+        <td><%= touring_route.touring_desc %></td>
+        <td><%= touring_route.start_date %></td>
+        <td><%= touring_route.end_date %></td>
+        <td><%= touring_route.start_lat %></td>
+        <td><%= touring_route.start_lon %></td>
+        <td><%= touring_route.end_lat %></td>
+        <td><%= touring_route.end_lon %></td>
+        <td><%= touring_route.wp1_lat %></td>
+        <td><%= touring_route.wp1_lon %></td>
+        <td><%= touring_route.wp2_lat %></td>
+        <td><%= touring_route.wp2_lon %></td>
+        <td><%= touring_route.wp3_lat %></td>
+        <td><%= touring_route.wp3_lon %></td>
+        <td><%= touring_route.created_at %></td>
+        <td><%= touring_route.updated_at %></td>
+        <td><%= link_to 'Show', touring_route %></td>
+        <td><%= link_to 'Edit', edit_touring_route_path(touring_route) %></td>
+        <td><%= link_to 'Destroy', touring_route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Touring Route', new_touring_route_path %>

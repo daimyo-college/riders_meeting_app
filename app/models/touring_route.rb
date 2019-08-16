@@ -1,0 +1,2 @@
+class TouringRoute < ApplicationRecord
+end

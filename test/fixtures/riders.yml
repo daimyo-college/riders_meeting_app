@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rider_name: MyString
+  email: MyString
+  bike_name: MyString
+  icon_file_name: MyString
+  created_at: 2019-08-17 01:27:58
+  updated_at: 2019-08-17 01:27:58
+
+two:
+  rider_name: MyString
+  email: MyString
+  bike_name: MyString
+  icon_file_name: MyString
+  created_at: 2019-08-17 01:27:58
+  updated_at: 2019-08-17 01:27:58

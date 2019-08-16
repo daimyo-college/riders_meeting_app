@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Rider name:</strong>
+  <%= @rider.rider_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @rider.email %>
+</p>
+
+<p>
+  <strong>Bike name:</strong>
+  <%= @rider.bike_name %>
+</p>
+
+<p>
+  <strong>Icon file name:</strong>
+  <%= @rider.icon_file_name %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @rider.created_at %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @rider.updated_at %>
+</p>
+
+<%= link_to 'Edit', edit_rider_path(@rider) %> |
+<%= link_to 'Back', riders_path %>
