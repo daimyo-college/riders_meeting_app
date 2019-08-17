@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_16_162835) do
+ActiveRecord::Schema.define(version: 2019_08_17_155943) do
 
   create_table "riders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "rider_name"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_08_16_162835) do
     t.string "touring_name"
     t.string "touring_desc"
     t.datetime "start_date"
-    t.string "end_date"
+    t.datetime "end_date"
     t.integer "start_lat"
     t.integer "start_lon"
     t.integer "end_lat"
