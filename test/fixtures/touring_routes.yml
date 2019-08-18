@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  touring_name: MyString
+  touring_desc: MyString
+  start_date: 2019-08-18 00:59:43
+  end_date: 2019-08-18 00:59:43
+  start_lat: 1
+  start_lon: 1
+  end_lat: 1
+  end_lon: 1
+  wp1_lat: 1
+  wp1_lon: 1
+  wp2_lat: 1
+  wp2_lon: 1
+  wp3_lat: 1
+  wp3_lon: 1
+  created_at: 2019-08-18 00:59:43
+  updated_at: 2019-08-18 00:59:43
+
+two:
+  touring_name: MyString
+  touring_desc: MyString
+  start_date: 2019-08-18 00:59:43
+  end_date: 2019-08-18 00:59:43
+  start_lat: 1
+  start_lon: 1
+  end_lat: 1
+  end_lon: 1
+  wp1_lat: 1
+  wp1_lon: 1
+  wp2_lat: 1
+  wp2_lon: 1
+  wp3_lat: 1
+  wp3_lon: 1
+  created_at: 2019-08-18 00:59:43
+  updated_at: 2019-08-18 00:59:43

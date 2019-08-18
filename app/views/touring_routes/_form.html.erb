@@ -1,0 +1,97 @@
+<%= form_with(model: touring_route, local: true) do |form| %>
+  <% if touring_route.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(touring_route.errors.count, "error") %> prohibited this touring_route from being saved:</h2>
+
+      <ul>
+      <% touring_route.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :touring_name %>
+    <%= form.text_field :touring_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :touring_desc %>
+    <%= form.text_field :touring_desc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.datetime_select :start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.datetime_select :end_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_lat %>
+    <%= form.number_field :start_lat %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_lon %>
+    <%= form.number_field :start_lon %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_lat %>
+    <%= form.number_field :end_lat %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_lon %>
+    <%= form.number_field :end_lon %>
+  </div>
+
+  <div class="field">
+    <%= form.label :wp1_lat %>
+    <%= form.number_field :wp1_lat %>
+  </div>
+
+  <div class="field">
+    <%= form.label :wp1_lon %>
+    <%= form.number_field :wp1_lon %>
+  </div>
+
+  <div class="field">
+    <%= form.label :wp2_lat %>
+    <%= form.number_field :wp2_lat %>
+  </div>
+
+  <div class="field">
+    <%= form.label :wp2_lon %>
+    <%= form.number_field :wp2_lon %>
+  </div>
+
+  <div class="field">
+    <%= form.label :wp3_lat %>
+    <%= form.number_field :wp3_lat %>
+  </div>
+
+  <div class="field">
+    <%= form.label :wp3_lon %>
+    <%= form.number_field :wp3_lon %>
+  </div>
+
+  <div class="field">
+    <%= form.label :created_at %>
+    <%= form.datetime_select :created_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :updated_at %>
+    <%= form.datetime_select :updated_at %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

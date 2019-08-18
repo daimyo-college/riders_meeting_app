@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Riders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rider name</th>
+      <th>Email</th>
+      <th>Bike name</th>
+      <th>Icon file name</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @riders.each do |rider| %>
+      <tr>
+        <td><%= rider.rider_name %></td>
+        <td><%= rider.email %></td>
+        <td><%= rider.bike_name %></td>
+        <td><%= rider.icon_file_name %></td>
+        <td><%= rider.created_at %></td>
+        <td><%= rider.updated_at %></td>
+        <td><%= link_to 'Show', rider %></td>
+        <td><%= link_to 'Edit', edit_rider_path(rider) %></td>
+        <td><%= link_to 'Destroy', rider, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rider', new_rider_path %>
