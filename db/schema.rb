@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_08_17_155943) do
 
-  create_table "riders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "riders", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "rider_name"
     t.string "email"
     t.string "bike_name"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_08_17_155943) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "touring_routes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "touring_routes", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "touring_name"
     t.string "touring_desc"
     t.datetime "start_date"
