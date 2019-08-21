@@ -11,7 +11,7 @@ default: &default
   adapter: mysql2
   database: rider_meeting
   username: root
-  password: Zousan6480!
+  password: 
   host: localhost
   encoding: utf8
 
