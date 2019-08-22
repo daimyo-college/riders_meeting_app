@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_17_155943) do
+ActiveRecord::Schema.define(version: 2019_08_20_224918) do
 
-  create_table "riders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "riders", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "rider_name"
     t.string "email"
     t.string "bike_name"
@@ -21,21 +21,21 @@ ActiveRecord::Schema.define(version: 2019_08_17_155943) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "touring_routes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "touring_routes", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "touring_name"
-    t.string "touring_desc"
+    t.text "touring_desc"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.integer "start_lat"
-    t.integer "start_lon"
-    t.integer "end_lat"
-    t.integer "end_lon"
-    t.integer "wp1_lat"
-    t.integer "wp1_lon"
-    t.integer "wp2_lat"
-    t.integer "wp2_lon"
-    t.integer "wp3_lat"
-    t.integer "wp3_lon"
+    t.float "start_lat", limit: 53
+    t.float "start_lon", limit: 53
+    t.float "end_lat", limit: 53
+    t.float "end_lon", limit: 53
+    t.float "wp1_lat", limit: 53
+    t.float "wp1_lon", limit: 53
+    t.float "wp2_lat", limit: 53
+    t.float "wp2_lon", limit: 53
+    t.float "wp3_lat", limit: 53
+    t.float "wp3_lon", limit: 53
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "rider_id"
