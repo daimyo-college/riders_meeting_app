@@ -80,5 +80,15 @@
   <%= @touring_route.updated_at %>
 </p>
 
+<% @touring_route.comments.each do |comment| %>
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.id %>
+    <%= comment.comment %>
+  </p>
+<% end %>
+
+<%= render 'comments/form', comment: @comment %>
+
 <%= link_to 'Edit', edit_touring_route_path(@touring_route) %> |
 <%= link_to 'Back', touring_routes_path %>

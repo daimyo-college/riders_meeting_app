@@ -10,6 +10,7 @@ class TouringRoutesController < ApplicationController
   # GET /touring_routes/1
   # GET /touring_routes/1.json
   def show
+        @comment = @touring_route.comments.build
   end
 
   # GET /touring_routes/new
