@@ -26,7 +26,6 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
-
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment.touring_route, notice: 'Comment was successfully created.' }
