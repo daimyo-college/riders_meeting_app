@@ -14,17 +14,27 @@
  *= require_self
  */
  header{
-  padding:20px;
-  background-color: cornflowerblue;
+  height: 100px;
+  width: 100%;
+  background-color: #6495ed;
+  position: fixed;
  }
 
-h1{
+header p{
+  line-height: 50px;
+  float: left;
   font-size: 30px;
+  margin-left: 50px;
 }
 
-li{
-  list-style:none;
+header nav{
   float:right;
-  margin:0 20px;
-  color: rgb(255, 255, 255);
+  margin-right: 100px;
+}
+
+header li{
+  line-height: 100px;
+  float: right;
+  margin-right: 30px;
+  list-style: none;
 }

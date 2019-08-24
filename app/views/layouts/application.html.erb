@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-  <header>
+  <head>
     <title>RidersMeetingApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,15 +9,18 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <h1>RidersMeeting</h1>
-    <ul>
-      <li><%= link_to 'route', touring_routes_path %></li>
-      <li><%= link_to 'rider', riders_path %></li>    
-    </ul>
-
-  </header>
+  </head>
 
   <body>
+   <header>
+      <p>RidersMeeting</p>
+      <nav>
+        <ul>
+          <li><%= link_to 'route', touring_routes_path %></li>
+          <li><%= link_to 'rider', riders_path %></li>    
+        </ul>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
