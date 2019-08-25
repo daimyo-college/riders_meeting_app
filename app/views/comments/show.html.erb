@@ -7,6 +7,9 @@
   <strong>Comment:</strong>
   <%= @comment.comment %>
 </p>
-
+<p>
+  <strong>Touring_route_id</strong>
+  <%= @comment.touring_route_id %>
+</p>
 <%= link_to 'Edit', edit_comment_path(@comment) %> |
 <%= link_to 'Back', comments_path %>
