@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
-
+<p>
+  <strong>Touring id:</strong>
+  <%= @touring_route.id %>
+</p>
 <p>
   <strong>Touring name:</strong>
   <%= @touring_route.touring_name %>
@@ -79,6 +82,17 @@
   <strong>Updated at:</strong>
   <%= @touring_route.updated_at %>
 </p>
+
+<%= render 'comments/form', comment: @comment %>
+
+<% @touring_route.comments.each do |comment| %>
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.comment %>
+  </p>
+<% end %>
+
+
 
 <%= link_to 'Edit', edit_touring_route_path(@touring_route) %> |
 <%= link_to 'Back', touring_routes_path %>
