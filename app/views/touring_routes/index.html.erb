@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Touring id</th>
       <th>Touring name</th>
       <th>Touring desc</th>
       <th>Start date</th>
@@ -28,6 +29,7 @@
   <tbody>
     <% @touring_routes.each do |touring_route| %>
       <tr>
+        <td><%= touring_route.id %></td>
         <td><%= touring_route.touring_name %></td>
         <td><%= touring_route.touring_desc %></td>
         <td><%= touring_route.start_date %></td>

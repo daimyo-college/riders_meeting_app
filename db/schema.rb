@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_20_224918) do
+ActiveRecord::Schema.define(version: 2019_08_23_062359) do
 
-  create_table "riders", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "comment"
+    t.bigint "touring_route_id"
+    t.bigint "touring_route_rider_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["touring_route_id"], name: "index_comments_on_touring_route_id"
+    t.index ["touring_route_rider_id"], name: "index_comments_on_touring_route_rider_id"
+  end
+
+  create_table "riders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "rider_name"
     t.string "email"
     t.string "bike_name"
@@ -21,7 +31,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_224918) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "touring_routes", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "touring_routes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "touring_name"
     t.text "touring_desc"
     t.datetime "start_date"
@@ -42,5 +52,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_224918) do
     t.index ["rider_id"], name: "index_touring_routes_on_rider_id"
   end
 
+  add_foreign_key "comments", "touring_routes"
+  add_foreign_key "comments", "touring_routes", column: "touring_route_rider_id"
   add_foreign_key "touring_routes", "riders"
 end
