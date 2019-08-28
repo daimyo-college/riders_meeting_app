@@ -25,14 +25,14 @@
 
 <div id="app">
   <h1>ルート一覧</h1>
-  	<ul>
-			<div v-for="v in routes" class="linkbox" style="border: solid 1px; margin: 3px; border-radius: 1rem;">
-				<h4 style="margin-left: 2rem;">{{v.touring_name}}</h4>
-        <a v-bind:href="'/touring_routes/' + v.id"></a>
-				<p style="margin-left: 2rem;">{{v.touring_desc}}</p>
-			</div>
-		</ul>
-  </div>
+  <ul>
+    <div v-for="v in routes" class="linkbox" style="border: solid 1px; margin: 3px; border-radius: 1rem;">
+      <h4 style="margin-left: 2rem;">{{v.touring_name}}</h4>
+      <a v-bind:href="'/touring_routes/' + v.id"></a>
+      <p style="margin-left: 2rem;">{{v.touring_desc}}</p>
+    </div>
+  </ul>
+</div>
 <br>
 <br>
 
