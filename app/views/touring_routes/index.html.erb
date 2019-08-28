@@ -2,6 +2,16 @@
 
 <h1>Touring Routes</h1>
 
+<div id="app">
+  <h1>ルート一覧</h1>
+  		<ul>
+			<div v-for="v in routes" style="border: solid 1px; margin: 3px; border-radius: 1rem;">
+					<h4 style="margin-left: 2rem;">{{v.touring_name}}</h4>
+					<p style="margin-left: 2rem;">{{v.touring_desc}}</p>
+			</div>
+		</ul>
+  </div>
+<br>
 <table>
   <thead>
     <tr>
@@ -57,3 +67,25 @@
 <br>
 
 <%= link_to 'New Touring Route', new_touring_route_path %>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+<script>
+(async () => {
+  new Vue({
+    el: "#app",
+    data: () => ({
+      routes: []
+    }),
+    async beforeMount() {
+      // 画面の準備をする前に Axios で JSON を取得する
+      // 例では /values/cats.json を API と見立てている
+      const res = await axios.get("/touring_routes.json");
+      // 取得した結果は res.data に入っているので this.cats 代入
+      console.log(res);
+      console.log(res.data);
+      this.routes = res.data;
+    }
+  });
+})();
+</script>
