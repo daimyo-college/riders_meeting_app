@@ -1,87 +1,31 @@
+<style>
+  .jsonData{
+    background-color: #eee;
+  }
+</style>
 <p id="notice"><%= notice %></p>
-<p>
-  <strong>Touring id:</strong>
-  <%= @touring_route.id %>
-</p>
-<p>
+
+<h3>jsonからgetしたデータ(背景網掛け)</h3>
+<p>あとからマップと合わせてレンダリングする</p>
+<p>表示していないデータも{{}}でくくってroute.カラム名で取得可能</p>
+<div id="app" class="jsonData">
   <strong>Touring name:</strong>
-  <%= @touring_route.touring_name %>
-</p>
-
-<p>
+  <p>{{ route.touring_name }}</p>
   <strong>Touring desc:</strong>
-  <%= @touring_route.touring_desc %>
-</p>
-
-<p>
+  <p>{{ route.touring_desc }}</p>
   <strong>Start date:</strong>
-  <%= @touring_route.start_date %>
-</p>
-
-<p>
+  <p>{{ route.start_date }}</p>
   <strong>End date:</strong>
-  <%= @touring_route.end_date %>
-</p>
-
-<p>
+  <p>{{ route.end_date }}</p>
   <strong>Start lat:</strong>
-  <%= @touring_route.start_lat %>
-</p>
-
-<p>
+  <p>{{ route.start_lat }}</p>
   <strong>Start lon:</strong>
-  <%= @touring_route.start_lon %>
-</p>
-
-<p>
+  <p>{{ route.start_lon }}</p>
   <strong>End lat:</strong>
-  <%= @touring_route.end_lat %>
-</p>
-
-<p>
+  <p>{{ route.end_lat }}</p>
   <strong>End lon:</strong>
-  <%= @touring_route.end_lon %>
-</p>
-
-<p>
-  <strong>Wp1 lat:</strong>
-  <%= @touring_route.wp1_lat %>
-</p>
-
-<p>
-  <strong>Wp1 lon:</strong>
-  <%= @touring_route.wp1_lon %>
-</p>
-
-<p>
-  <strong>Wp2 lat:</strong>
-  <%= @touring_route.wp2_lat %>
-</p>
-
-<p>
-  <strong>Wp2 lon:</strong>
-  <%= @touring_route.wp2_lon %>
-</p>
-
-<p>
-  <strong>Wp3 lat:</strong>
-  <%= @touring_route.wp3_lat %>
-</p>
-
-<p>
-  <strong>Wp3 lon:</strong>
-  <%= @touring_route.wp3_lon %>
-</p>
-
-<p>
-  <strong>Created at:</strong>
-  <%= @touring_route.created_at %>
-</p>
-
-<p>
-  <strong>Updated at:</strong>
-  <%= @touring_route.updated_at %>
-</p>
+  <p>{{ route.end_lon }}</p>
+</div>
 
 <%= render 'comments/form', comment: @comment %>
 
@@ -92,7 +36,26 @@
   </p>
 <% end %>
 
-
-
 <%= link_to 'Edit', edit_touring_route_path(@touring_route) %> |
 <%= link_to 'Back', touring_routes_path %>
+
+<script>
+(async () => {
+  new Vue({
+    el: "#app",
+    data: () => ({
+      // Vueに返す値を準備
+      route: []
+    }),
+    async beforeMount() {
+      const url = `/touring_routes/<%= @touring_route.id %>.json`;
+      // 画面の準備をする前に Axios で JSON を取得する
+      const res = await axios.get(url);
+      // 取得した結果をthis.routes代入
+      console.log(res);
+      console.log(res.data);
+      this.route = res.data;
+    }
+  });
+})();
+</script>
