@@ -100,6 +100,17 @@
 <div id="map" style=" width: 800px; height: 500px"></div>
 
 <script>
+(async() => {
+  // json を読み込む
+  const res = await axios.get('/touring_routes').catch(() => {
+    console.error('データの取得に失敗')
+    return null
+  })
+  // 使いやすいように変数に代入
+  const lat = res.data.start_lat
+  // 取得した情報を表示する
+  console.log(res.data.start_lat)
+})()
 
 
 function initMap() {
