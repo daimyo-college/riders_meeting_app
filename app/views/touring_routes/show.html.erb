@@ -120,25 +120,24 @@ function initMap(routes) {
     console.table(routes)
     // ルート検索の条件
     var request = {
-        origin: new google.maps.LatLng(routes.data.start_lat,139.766084), // 出発地
-        destination: new google.maps.LatLng(34.73348,135.500109), // 目的地
+        origin: new google.maps.LatLng(routes.data.start_lat,routes.data.start_lon), // 出発地
+        destination: new google.maps.LatLng(routes.data.end_lat,routes.data.end_lon), // 目的地
         waypoints: [ // 経由地点(指定なしでも可)
-            { location: new google.maps.LatLng(35.630152,139.74044) },
-            { location: new google.maps.LatLng(35.507456,139.617585) },
-            { location: new google.maps.LatLng(35.25642,139.154904) },
-            { location: new google.maps.LatLng(35.103217,139.07776) },
-            { location: new google.maps.LatLng(35.127152,138.910627) },
-            { location: new google.maps.LatLng(35.142365,138.663199) },
-            { location: new google.maps.LatLng(34.97171,138.38884) },
-            { location: new google.maps.LatLng(34.769758,138.014928) },
+            { location: new google.maps.LatLng(routes.data.wp1_lat,routes.data.wp1_lon) },
+            { location: new google.maps.LatLng(routes.data.wp2_lat,routes.data.wp2_lon) },
+            { location: new google.maps.LatLng(routes.data.wp3_lat,routes.data.wp3_lon) },
         ],
         travelMode: google.maps.DirectionsTravelMode.WALKING, // 交通手段(歩行。DRIVINGの場合は車)
     };
 
+    // マップの中心計算
+    let view_center_lat = (routes.data.start_lat + routes.data.end_lat) / 2
+    let view_center_lon = (routes.data.start_lon + routes.data.end_lon) / 2
+
     // マップの生成
     var map = new google.maps.Map(document.getElementById("map"), {
-        center: new google.maps.LatLng(35.681382,139.766084), // マップの中心
-        zoom: 7 // ズームレベル
+        center: new google.maps.LatLng(view_center_lat,view_center_lon), // マップの中心
+        zoom: 9 // ズームレベル
     });
 
     var d = new google.maps.DirectionsService(); // ルート検索オブジェクト
