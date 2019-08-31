@@ -102,15 +102,10 @@
 (async() => {
   // json を読み込む
   console.log("json axios start!")
-  const res = await axios.get('/touring_routes/4.json').catch(() => {
+  const res = await axios.get('/touring_routes/<%= @touring_route.id %>.json').catch(() => {
     console.error('データの取得に失敗')
     return null
   })
-  // 使いやすいように変数に代入
-  console.log("res: ",res)
-  const lat = res.data.start_lat
-  // 取得した情報を表示する
-  console.log("lat: ",res.data.start_lat)
   //マップの初期化表示
   initMap(res)
 })()
