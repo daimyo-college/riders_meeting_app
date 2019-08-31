@@ -83,6 +83,8 @@
   <%= @touring_route.updated_at %>
 </p>
 
+<div id="map" style=" width: 800px; height: 500px"></div>
+
 <%= render 'comments/form', comment: @comment %>
 
 <% @touring_route.comments.each do |comment| %>
@@ -92,12 +94,9 @@
   </p>
 <% end %>
 
-
-
 <%= link_to 'Edit', edit_touring_route_path(@touring_route) %> |
 <%= link_to 'Back', touring_routes_path %>
 
-<div id="map" style=" width: 800px; height: 500px"></div>
 
 <script>
 (async() => {
@@ -112,6 +111,7 @@
   const lat = res.data.start_lat
   // 取得した情報を表示する
   console.log("lat: ",res.data.start_lat)
+  # マップの初期化表示
   initMap(res)
 })()
 </script>
