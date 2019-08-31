@@ -1,5 +1,151 @@
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  #map {
+    height: 50%;
+    width: 80%;
+  }
+</style>
 <h1>New Touring Route</h1>
 
 <%= render 'form', touring_route: @touring_route %>
 
 <%= link_to 'Back', touring_routes_path %>
+
+<h1>加藤さんのからForkしたやつ</h1>
+<form name="form1" action="">
+  <ul>
+    <li>
+      <input id="Radio1" name="RadioGroup1" type="radio" checked/>
+      <label for="Radio1">出発地点</label>
+      <div>lat:<span id="lat1"></span> lng:<span id="lng1"></span></div>
+    </li>
+    <li>
+      <input id="Radio2" name="RadioGroup1" type="radio"/>
+      <label for="Radio2">目的地</label>
+      <div>lat:<span id="lat2"></span> lng:<span id="lng2"></span></div>
+    </li>
+    <li>
+      <input id="Radio3" name="RadioGroup1" type="radio"/>
+      <label for="Radio3">経由地1</label>
+      <div>lat:<span id="lat3"></span> lng:<span id="lng3"></span></div>
+    </li>
+    <li>
+      <input id="Radio4" name="RadioGroup1" type="radio"/>
+      <label for="Radio4">経由地2</label>
+      <div>lat:<span id="lat4"></span> lng:<span id="lng4"></span></div>
+    </li>
+    <li>
+      <input id="Radio5" name="RadioGroup1" type="radio"/>
+      <label for="Radio5">経由地3</label>
+      <div>lat:<span id="lat5"></span> lng:<span id="lng5"></span></div>
+    </li>
+  </ul>
+</form>
+<button id="button" type="button">dataをpost!</button>
+<div id="map"></div>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script src="https://maps.google.com/maps/api/js?key=KEY&callback=initMap" async defer></script>
+<script>
+  let route ={};
+  function initMap() {
+
+    // マップの初期化
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 13,
+      center: {lat: 36.38992, lng: 139.06065}
+    });
+
+      // クリックイベントを追加
+    map.addListener('click', function(e) {
+      getClickLatLng(e.latLng, map);
+
+      // チェックボタンの状態値でデータを表示
+      let radio_btns = document.getElementsByName("RadioGroup1");
+
+      for(var i = 0; i < radio_btns.length; i++){
+        const lat = e.latLng.lat().toFixed(6);
+        const lng = e.latLng.lng().toFixed(6);
+        if(radio_btns[i].checked) {
+          switch(i){
+            case 0:
+              document.getElementById('lat1').textContent = lat;
+              route.start_lat = lat;
+              document.getElementById('lng1').textContent = lng;
+              route.start_lon = lng;
+              break;
+            case 1:
+              document.getElementById('lat2').textContent = lat;
+              route.end_lat = lat;
+              document.getElementById('lng2').textContent = lng;
+              route.end_lon = lng;
+              break;
+            case 2:
+              document.getElementById('lat3').textContent = lat;
+              route.wp1_lat = lat;
+              document.getElementById('lng3').textContent = lng;
+              route.wp1_lon = lng;
+              break;
+            case 3:
+              document.getElementById('lat4').textContent = lat;
+              route.wp2_lat = lat;
+              document.getElementById('lng4').textContent = lng;
+              route.wp2_lon = lng;
+              break;
+            case 4:
+              document.getElementById('lat5').textContent = lat;
+              route.wp3_lat = lat;
+              document.getElementById('lng5').textContent = lng;
+              route.wp3_lon = lng;
+              break;
+            default:
+              console.log(i,"check_btn error");
+              break;
+          }
+        }
+      }
+      console.log(route);
+    });
+  }
+
+  function getClickLatLng(lat_lng, map) {
+    // マーカーを設置
+    var marker = new google.maps.Marker({
+      position: lat_lng,
+      map: map
+    });
+    // 座標の中心をずらす
+    map.panTo(lat_lng);
+  }
+  // クリックイベント
+  const submit = document.getElementById("button");
+  submit.addEventListener("click", function(){
+    alert("click");
+    const url = "/touring_routes/"
+    axios.defaults.headers.common = {
+      'X-Requested-With': 'XMLHttpRequest',
+      'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    };
+    route.touring_name = $("#touring_route_touring_name").val();
+    route.touring_desc = $("#touring_route_touring_desc").val();
+    console.log(route);
+    axios
+    .post(url, route)
+    .then(res => {
+      alert("「" + route.touring_name + "」登録完了");
+      // location.href = `/<%= @touring_route.id`;
+    })
+    .catch(error => {
+      alert("「" + route.touring_name + "」登録失敗");
+      console.log(error, route);
+    });
+  });
+</script>
