@@ -101,7 +101,6 @@
 <script>
 (async() => {
   // json を読み込む
-  console.log("json axios start!")
   const res = await axios.get('/touring_routes/<%= @touring_route.id %>.json').catch(() => {
     console.error('データの取得に失敗')
     return null
@@ -111,7 +110,6 @@
 })()
 
 function initMap(routes) {
-    console.table(routes)
     // ルート検索の条件
     var request = {
         origin: new google.maps.LatLng(routes.data.start_lat,routes.data.start_lon), // 出発地
