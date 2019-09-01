@@ -32,8 +32,8 @@
   </div>
 
   <div class="field">
-    <%= radio_button_tag(:lanlon, "start") %>
-    <%= label_tag(:latlon_start, "出発地点") %>
+    <%= radio_button_tag(:RadioGroup, "start") %>
+    <%= label_tag(:RadioGroup_start, "出発地点") %>
     <%= form.label :start_lat %>
     <%= form.text_field :start_lat %>
   </div>
@@ -44,8 +44,8 @@
   </div>
 
   <div class="field">
-    <%= radio_button_tag(:lanlon, "end") %>
-    <%= label_tag(:latlon_end, "目的地") %>
+    <%= radio_button_tag(:RadioGroup, "end") %>
+    <%= label_tag(:RadioGroup_end, "目的地") %>
     <%= form.label :end_lat %>
     <%= form.text_field :end_lat %>
   </div>
@@ -56,8 +56,8 @@
   </div>
 
   <div class="field">
-    <%= radio_button_tag(:lanlon, "wp1") %>
-    <%= label_tag(:latlon_wp1, "経由地1") %>
+    <%= radio_button_tag(:RadioGroup, "wp1") %>
+    <%= label_tag(:RadioGroup_wp1, "経由地1") %>
     <%= form.label :wp1_lat %>
     <%= form.text_field :wp1_lat %>
   </div>
@@ -68,8 +68,8 @@
   </div>
 
   <div class="field">
-    <%= radio_button_tag(:lanlon, "wp2") %>
-    <%= label_tag(:latlon_wp2, "経由地2") %><%= form.label :wp2_lat %>
+    <%= radio_button_tag(:RadioGroup, "wp2") %>
+    <%= label_tag(:RadioGroup_wp2, "経由地2") %><%= form.label :wp2_lat %>
     <%= form.text_field :wp2_lat %>
   </div>
 
@@ -79,8 +79,8 @@
   </div>
 
   <div class="field">
-    <%= radio_button_tag(:lanlon, "wp3") %>
-    <%= label_tag(:latlon_wp3, "経由地3") %>
+    <%= radio_button_tag(:RadioGroup, "wp3") %>
+    <%= label_tag(:RadioGroup_wp3, "経由地3") %>
     <%= form.label :wp3_lat %>
     <%= form.text_field :wp3_lat %>
   </div>
