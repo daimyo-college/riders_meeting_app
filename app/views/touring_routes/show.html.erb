@@ -119,7 +119,7 @@ function initMap(routes) {
             { location: new google.maps.LatLng(routes.data.wp2_lat,routes.data.wp2_lon) },
             { location: new google.maps.LatLng(routes.data.wp3_lat,routes.data.wp3_lon) },
         ],
-        travelMode: google.maps.DirectionsTravelMode.WALKING, // 交通手段(歩行。DRIVINGの場合は車)
+        travelMode: google.maps.DirectionsTravelMode.DRIVING, // 交通手段(DRIVINGの場合は車)
     };
 
     // マップの中心計算
@@ -146,4 +146,4 @@ function initMap(routes) {
     });
 }
 </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATAz-WoDt8oJiahKPcbqgMMOCtihvSJAQ" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY']%>" async defer></script>
