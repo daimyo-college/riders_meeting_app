@@ -7,13 +7,12 @@
 <%= link_to 'Back', touring_routes_path %>
 
 <script>
-$(function() {
     function initMap() {
 
       // マップの初期化
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 9,
-          center: {lat: 36.38992, lng: 139.06065}
+          center: {lat: 33.31478181566308, lng: 130.50810970427096}
         });
  
       // ツーリングルートのオブジェクト定義
@@ -22,9 +21,6 @@ $(function() {
         // クリックイベントを追加
         map.addListener('click', function(e) {
           getClickLatLng(e.latLng, map);
-
-          # let json = JSON.stringify( routes );
-
 
         // チェックボタンの状態値でデータを表示
           let radio_btns = document.getElementsByName("RadioGroup");
@@ -84,5 +80,6 @@ $(function() {
   
       map.panTo(lat_lng);
     }
-    });
+
   </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATAz-WoDt8oJiahKPcbqgMMOCtihvSJAQ&callback=initMap" async defer></script>
