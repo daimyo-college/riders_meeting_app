@@ -2,4 +2,97 @@
 
 <%= render 'form', touring_route: @touring_route %>
 
+<div id="map" style=" width: 800px; height: 500px"></div>
+
 <%= link_to 'Back', touring_routes_path %>
+
+  <script>
+    function initMap() {
+
+      // マップの初期化
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 9,
+          center: {lat: 36.38992, lng: 139.06065}
+        });
+ 
+      // ツーリングルートのオブジェクト定義
+        let routes ={};
+
+        // クリックイベントを追加
+        map.addListener('click', function(e) {
+          getClickLatLng(e.latLng, map);
+
+          # let json = JSON.stringify( routes );
+
+
+        // チェックボタンの状態値でデータを表示
+          let radio_btns = document.getElementsByName("RadioGroup1");
+
+          for(var i = 0; i < radio_btns.length; i++){
+          
+            if(radio_btns[i].checked) {
+              switch(i){
+                case 0:
+                  document.getElementById('lat1').textContent = e.latLng.lat();
+                  routes.start_lat = e.latLng.lat();
+                  document.getElementById('lng1').textContent = e.latLng.lng();
+                  routes.start_lng = e.latLng.lng();
+                  break;
+                case 1:
+                  document.getElementById('lat2').textContent = e.latLng.lat();
+                  routes.end_lat = e.latLng.lat();
+                  document.getElementById('lng2').textContent = e.latLng.lng();
+                  routes.end_lng = e.latLng.lng();
+                  break;
+                case 2:
+                  document.getElementById('lat3').textContent = e.latLng.lat();
+                  routes.wp1_lat = e.latLng.lat();
+                  document.getElementById('lng3').textContent = e.latLng.lng();
+                  routes.wp1_lng = e.latLng.lng();
+                  break;
+                case 3:
+                  document.getElementById('lat4').textContent = e.latLng.lat();
+                  routes.wp2_lat = e.latLng.lat();
+                  document.getElementById('lng4').textContent = e.latLng.lng();
+                  routes.wp2_lng = e.latLng.lng();
+                  break;
+                case 4:
+                  document.getElementById('lat5').textContent = e.latLng.lat();
+                  routes.wp3 = e.latLng.lat();
+                  document.getElementById('lng5').textContent = e.latLng.lng();
+                  routes.wp3_lng = e.latLng.lng();
+                  break;
+                default:
+                  console.log(i,"check_btn error");
+                break;
+              }
+            }
+          } 
+      });
+    }
+
+    function getClickLatLng(lat_lng, map) {
+
+      // 座標を表示
+      // document.getElementById('lat').textContent = lat_lng.lat();
+      // document.getElementById('lng').textContent = lat_lng.lng();
+
+    
+
+      // 座標履歴を表示 by kato
+      // let historyHtml = "<p>lat:" + lat_lng.lat() + " lng:" +lat_lng.lng() + "</p>";
+      // $("#ex").append(historyHtml) ;     
+      
+
+
+      // マーカーを設置
+      var marker = new google.maps.Marker({
+        position: lat_lng,
+        map: map
+      });
+
+      // 座標の中心をずらす
+  
+      map.panTo(lat_lng);
+    }
+  </script>
