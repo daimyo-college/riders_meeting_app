@@ -101,7 +101,6 @@
 <script>
 (async() => {
   // json を読み込む
-  console.log("json axios start!")
   const res = await axios.get('/touring_routes/<%= @touring_route.id %>.json').catch(() => {
     console.error('データの取得に失敗')
     return null
@@ -111,7 +110,6 @@
 })()
 
 function initMap(routes) {
-    console.table(routes)
     // ルート検索の条件
     var request = {
         origin: new google.maps.LatLng(routes.data.start_lat,routes.data.start_lon), // 出発地
@@ -121,7 +119,7 @@ function initMap(routes) {
             { location: new google.maps.LatLng(routes.data.wp2_lat,routes.data.wp2_lon) },
             { location: new google.maps.LatLng(routes.data.wp3_lat,routes.data.wp3_lon) },
         ],
-        travelMode: google.maps.DirectionsTravelMode.WALKING, // 交通手段(歩行。DRIVINGの場合は車)
+        travelMode: google.maps.DirectionsTravelMode.DRIVING, // 交通手段(DRIVINGの場合は車)
     };
 
     // マップの中心計算
@@ -148,3 +146,4 @@ function initMap(routes) {
     });
 }
 </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY']%>" async defer></script>
