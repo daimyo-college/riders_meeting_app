@@ -1,9 +1,22 @@
 <p id="notice"><%= notice %></p>
 
+<div class="contents-show">
 <p>
-  <strong>Rider name:</strong>
-  <%= @rider.rider_name %>
+  <strong class="icon">Icon file name:</strong>
+  <%= @rider.icon_file_name %>
 </p>
+
+<br>
+
+<p><i class="far fa-user-circle user-icon"></i></p>
+
+<br>
+
+<p>
+<strong class="username"><%= @rider.rider_name %></strong>
+</p>
+
+<div class="profile">
 
 <p>
   <strong>Email:</strong>
@@ -16,11 +29,6 @@
 </p>
 
 <p>
-  <strong>Icon file name:</strong>
-  <%= @rider.icon_file_name %>
-</p>
-
-<p>
   <strong>Created at:</strong>
   <%= @rider.created_at %>
 </p>
@@ -29,6 +37,8 @@
   <strong>Updated at:</strong>
   <%= @rider.updated_at %>
 </p>
+</div>
 
 <%= link_to 'Edit', edit_rider_path(@rider) %> |
 <%= link_to 'Back', riders_path %>
+</div>
