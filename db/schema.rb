@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_17_155943) do
+ActiveRecord::Schema.define(version: 2019_08_23_062359) do
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "comment"
+    t.bigint "touring_route_id"
+    t.bigint "touring_route_rider_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["touring_route_id"], name: "index_comments_on_touring_route_id"
+    t.index ["touring_route_rider_id"], name: "index_comments_on_touring_route_rider_id"
+  end
 
   create_table "riders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "rider_name"
@@ -23,24 +33,26 @@ ActiveRecord::Schema.define(version: 2019_08_17_155943) do
 
   create_table "touring_routes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "touring_name"
-    t.string "touring_desc"
+    t.text "touring_desc"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.integer "start_lat"
-    t.integer "start_lon"
-    t.integer "end_lat"
-    t.integer "end_lon"
-    t.integer "wp1_lat"
-    t.integer "wp1_lon"
-    t.integer "wp2_lat"
-    t.integer "wp2_lon"
-    t.integer "wp3_lat"
-    t.integer "wp3_lon"
+    t.float "start_lat", limit: 53
+    t.float "start_lon", limit: 53
+    t.float "end_lat", limit: 53
+    t.float "end_lon", limit: 53
+    t.float "wp1_lat", limit: 53
+    t.float "wp1_lon", limit: 53
+    t.float "wp2_lat", limit: 53
+    t.float "wp2_lon", limit: 53
+    t.float "wp3_lat", limit: 53
+    t.float "wp3_lon", limit: 53
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "rider_id"
     t.index ["rider_id"], name: "index_touring_routes_on_rider_id"
   end
 
+  add_foreign_key "comments", "touring_routes"
+  add_foreign_key "comments", "touring_routes", column: "touring_route_rider_id"
   add_foreign_key "touring_routes", "riders"
 end

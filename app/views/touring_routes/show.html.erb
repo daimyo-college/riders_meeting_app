@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
-
+<p>
+  <strong>Touring id:</strong>
+  <%= @touring_route.id %>
+</p>
 <p>
   <strong>Touring name:</strong>
   <%= @touring_route.touring_name %>
@@ -80,5 +83,67 @@
   <%= @touring_route.updated_at %>
 </p>
 
+<div id="map" style=" width: 800px; height: 500px"></div>
+
+<%= render 'comments/form', comment: @comment %>
+
+<% @touring_route.comments.each do |comment| %>
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.comment %>
+  </p>
+<% end %>
+
 <%= link_to 'Edit', edit_touring_route_path(@touring_route) %> |
 <%= link_to 'Back', touring_routes_path %>
+
+
+<script>
+(async() => {
+  // json を読み込む
+  const res = await axios.get('/touring_routes/<%= @touring_route.id %>.json').catch(() => {
+    console.error('データの取得に失敗')
+    return null
+  })
+  //マップの初期化表示
+  initMap(res)
+})()
+
+function initMap(routes) {
+    // ルート検索の条件
+    var request = {
+        origin: new google.maps.LatLng(routes.data.start_lat,routes.data.start_lon), // 出発地
+        destination: new google.maps.LatLng(routes.data.end_lat,routes.data.end_lon), // 目的地
+        waypoints: [ // 経由地点(指定なしでも可)
+            { location: new google.maps.LatLng(routes.data.wp1_lat,routes.data.wp1_lon) },
+            { location: new google.maps.LatLng(routes.data.wp2_lat,routes.data.wp2_lon) },
+            { location: new google.maps.LatLng(routes.data.wp3_lat,routes.data.wp3_lon) },
+        ],
+        travelMode: google.maps.DirectionsTravelMode.DRIVING, // 交通手段(DRIVINGの場合は車)
+    };
+
+    // マップの中心計算
+    let view_center_lat = (routes.data.start_lat + routes.data.end_lat) / 2
+    let view_center_lon = (routes.data.start_lon + routes.data.end_lon) / 2
+
+    // マップの生成
+    var map = new google.maps.Map(document.getElementById("map"), {
+        center: new google.maps.LatLng(view_center_lat,view_center_lon), // マップの中心
+        zoom: 9 // ズームレベル
+    });
+
+    var d = new google.maps.DirectionsService(); // ルート検索オブジェクト
+    var r = new google.maps.DirectionsRenderer({ // ルート描画オブジェクト
+        map: map, // 描画先の地図
+        preserveViewport: true, // 描画後に中心点をずらさない
+    });
+    // ルート検索
+    d.route(request, function(result, status){
+        // OKの場合ルート描画
+        if (status == google.maps.DirectionsStatus.OK) {
+            r.setDirections(result);
+        }
+    });
+}
+</script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY']%>" async defer></script>
