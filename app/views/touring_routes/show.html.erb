@@ -100,8 +100,8 @@
 </div>
 
 <%= link_to 'Edit', edit_touring_route_path(@touring_route) %> |
-<%= link_to 'Back', touring_routes_path %>
-
+<%= link_to 'Back', touring_routes_path %> |
+<%= link_to 'Destroy', @touring_route, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <script>
 (async() => {
@@ -110,20 +110,41 @@
     console.error('データの取得に失敗')
     return null
   })
-  //マップの初期化表示
-  initMap(res)
+
+  $(function(){
+    setTimeout(function(){
+        //マップの初期化表示
+       initMap(res)
+    },50);
+});
+
 })()
 
 function initMap(routes) {
     // ルート検索の条件
+
+    console.log("wp1",routes.data.wp1_lat,routes.data.wp1_lon)
+    console.log("wp2",routes.data.wp2_lat,routes.data.wp2_lon)
+    console.log("wp4",routes.data.wp3_lat,routes.data.wp3_lon)
+
+    let way_points = []
+    if (routes.data.wp1_lat!== null) {
+        let locations = {location: new google.maps.LatLng(routes.data.wp1_lat,routes.data.wp1_lon)}
+        way_points.push(locations)
+    }
+    if (routes.data.wp2_lat !== null) {
+        let locations = {location: new google.maps.LatLng(routes.data.wp2_lat,routes.data.wp2_lon)}
+        way_points.push(locations)
+    }
+    if (routes.data.wp3_lat !== null) {
+        let locations = {location: new google.maps.LatLng(routes.data.wp3_lat,routes.data.wp3_lon)}
+        way_points.push(locations)
+    }
+
     var request = {
         origin: new google.maps.LatLng(routes.data.start_lat,routes.data.start_lon), // 出発地
         destination: new google.maps.LatLng(routes.data.end_lat,routes.data.end_lon), // 目的地
-        waypoints: [ // 経由地点(指定なしでも可)
-            { location: new google.maps.LatLng(routes.data.wp1_lat,routes.data.wp1_lon) },
-            { location: new google.maps.LatLng(routes.data.wp2_lat,routes.data.wp2_lon) },
-            { location: new google.maps.LatLng(routes.data.wp3_lat,routes.data.wp3_lon) },
-        ],
+        waypoints: way_points,  //経由地
         travelMode: google.maps.DirectionsTravelMode.DRIVING, // 交通手段(DRIVINGの場合は車)
     };
 

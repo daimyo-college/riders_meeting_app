@@ -39,6 +39,16 @@ h1{
 p{
     font-size: 1.6rem;
 }
+ul{
+  list-style: none;
+  padding-inline-start: 0;
+}
+label{
+  padding-right: 10px;
+}
+input{
+  margin: 0 10px;
+}
 .none{
   display: none;
 }
@@ -83,8 +93,6 @@ header li{
   list-style: none;
 }
 
-header li :active{
+header li :hover{
   background-color:rgba(192,192, 192, 1.0);
-  transition: all 1s;
-  box-shadow: none;
 }
