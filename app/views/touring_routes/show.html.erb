@@ -110,8 +110,14 @@
     console.error('データの取得に失敗')
     return null
   })
-  //マップの初期化表示
-  initMap(res)
+
+  $(function(){
+    setTimeout(function(){
+        //マップの初期化表示
+       initMap(res)
+    },50);
+});
+
 })()
 
 function initMap(routes) {
