@@ -39,12 +39,10 @@
         </ul>
       </nav>
     </header>
- 
 
-  <body>
-    <%= link_to 'route', touring_routes_path %>
-    <%= link_to 'rider', riders_path %>
-    <%= link_to 'comment', comments_path %>
-    <%= yield %>
+    <main> 
+      <%= yield %>
+    </main>
+   
   </body>
 </html>

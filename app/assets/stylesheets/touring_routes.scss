@@ -1,10 +1,23 @@
 // Place all the styles related to the touring_routes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.contents{
-  padding-top: 100px;
-  margin:0 auto;
+
+/*div要素全体にリンクをつけるために必要な要素*/
+.linkbox {
+    position: relative;
 }
-.touring_route_id_form{
-  display: none;
+.linkbox a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height:100%;
+    width: 100%;
+}
+/* 見た目をわかりやすくするための設定*/
+.linkbox {
+    border: solid 2px #000000;
+}
+.linkbox a:hover{/* マウスオーバー時に色変更*/
+    opacity: 0.1;
+    background-color: #777777;
 }

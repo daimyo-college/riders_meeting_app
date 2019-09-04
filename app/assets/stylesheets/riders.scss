@@ -2,23 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .contents{
-  padding-top: 100px;
   margin: 0 auto;
   width:1200px;
   background-color: rgba(245,245,245,0.5);
 }
 
 .contents-show{
-  padding-top: 100px;
   margin: 0 auto;
   width:1200px;
   background-image:url("/road.jpg");
   background-size: cover;
 }
 
-p{
-  text-align: center;
-}
 
 .user-icon{
   font-size:12em;
