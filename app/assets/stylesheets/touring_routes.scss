@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /*div要素全体にリンクをつけるために必要な要素*/
+.touring_new,.touring_show{
+  display: flex;
+  justify-content: space-between;
+}
 .linkbox {
     position: relative;
 }
