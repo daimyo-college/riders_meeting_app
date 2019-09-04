@@ -11,7 +11,9 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
   </head>
 
   <body>
@@ -37,15 +39,10 @@
         </ul>
       </nav>
     </header>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
-  </head>
 
-  <body>
-    <%= link_to 'route', touring_routes_path %>
-    <%= link_to 'rider', riders_path %>
-    <%= link_to 'comment', comments_path %>
-    <%= yield %>
+    <main> 
+      <%= yield %>
+    </main>
+   
   </body>
 </html>

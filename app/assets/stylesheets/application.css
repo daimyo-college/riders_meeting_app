@@ -13,8 +13,43 @@
  *= require_tree .
  *= require_self
  */
+ @charset "UTF-8";
+/* CSS Document */
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:300,400,500,700&display=swap&subset=japanese');
+html{
+	font-size: 62.5%; /* 16px X 62.5% = 10PX */
+}
 body{
-  margin: 0px;
+	/* color:#333; */
+	/* font-family: "Roboto","Noto Sans Jp",sans-serif; */
+	font-size: 1.6rem;
+	font-feature-settings: "palt" 1;
+	letter-spacing: 0.02rem;
+	line-height:1.85;
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+   margin: 0px;
+}
+main{
+margin: 100px 40px 0 40px;
+}
+h1{
+  font-size: 2.4rem;
+}
+p{
+    font-size: 1.6rem;
+}
+.none{
+  display: none;
+}
+.flex{
+  display:flex;
+}
+.form{
+  box-sizing: border-box;
+}
+.field{
+  margin-top: 1.6rem;
 }
 
  header{
@@ -23,13 +58,17 @@ body{
   background-color:#C0C0C0;
   position: fixed;
   padding: 1px;
+  top: 0;
+  z-index: 99;
  }
 
 header p{
-  line-height: 25px;
+  line-height: 80px;
   float: left;
-  font-size: 30px;
-  margin-left: 50px;
+  font-size: 40px;
+  font-weight: bold;
+  margin-left: 40px;
+  margin-top: 0px;
 }
 
 header nav{
@@ -44,7 +83,7 @@ header li{
   list-style: none;
 }
 
-header li:active{
+header li :active{
   background-color:rgba(192,192, 192, 1.0);
   transition: all 1s;
   box-shadow: none;
