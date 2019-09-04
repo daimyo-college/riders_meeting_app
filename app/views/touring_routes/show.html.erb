@@ -100,8 +100,8 @@
 </div>
 
 <%= link_to 'Edit', edit_touring_route_path(@touring_route) %> |
-<%= link_to 'Back', touring_routes_path %>
-
+<%= link_to 'Back', touring_routes_path %> |
+<%= link_to 'Destroy', @touring_route, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <script>
 (async() => {
