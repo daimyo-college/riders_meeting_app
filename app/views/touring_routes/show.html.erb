@@ -1,92 +1,93 @@
 <p id="notice"><%= notice %></p>
-<p class="none">
-  <strong>Touring id:</strong>
-  <%= @touring_route.id %>
-</p>
-<p>
-  <strong>Touring name:</strong>
-  <%= @touring_route.touring_name %>
-</p>
-
-<p>
-  <strong>Touring desc:</strong>
-  <%= @touring_route.touring_desc %>
-</p>
-
-<p>
-  <strong>Start date:</strong>
-  <%= @touring_route.start_date %>
-</p>
-
-<p>
-  <strong>End date:</strong>
-  <%= @touring_route.end_date %>
-</p>
-  <div class="none">
-      <p>
-        <strong>Start lat:</strong>
-        <%= @touring_route.start_lat %>
-      </p>
-
-      <p>
-        <strong>Start lon:</strong>
-        <%= @touring_route.start_lon %>
-      </p>
-
-      <p>
-        <strong>End lat:</strong>
-        <%= @touring_route.end_lat %>
-      </p>
-
-      <p>
-        <strong>End lon:</strong>
-        <%= @touring_route.end_lon %>
-      </p>
-
-      <p>
-        <strong>Wp1 lat:</strong>
-        <%= @touring_route.wp1_lat %>
-      </p>
-
-      <p>
-        <strong>Wp1 lon:</strong>
-        <%= @touring_route.wp1_lon %>
-      </p>
-
-      <p>
-        <strong>Wp2 lat:</strong>
-        <%= @touring_route.wp2_lat %>
-      </p>
-
-      <p>
-        <strong>Wp2 lon:</strong>
-        <%= @touring_route.wp2_lon %>
-      </p>
-
-      <p>
-        <strong>Wp3 lat:</strong>
-        <%= @touring_route.wp3_lat %>
-      </p>
-
-      <p>
-        <strong>Wp3 lon:</strong>
-        <%= @touring_route.wp3_lon %>
-      </p>
-
-      <p>
-        <strong>Created at:</strong>
-        <%= @touring_route.created_at %>
-      </p>
-
-      <p>
-        <strong>Updated at:</strong>
-        <%= @touring_route.updated_at %>
-      </p>
-  </div>
 <div class="touring_show">
     <div>
-    <%= render 'comments/form', comment: @comment %>
-      <% @touring_route.comments.each do |comment| %>
+      <p class="none">
+        <strong>Touring id:</strong>
+        <%= @touring_route.id %>
+      </p>
+      <p>
+        <strong>Touring name:</strong>
+        <%= @touring_route.touring_name %>
+      </p>
+
+      <p>
+        <strong>Touring desc:</strong>
+        <%= @touring_route.touring_desc %>
+      </p>
+
+      <p>
+        <strong>Start date:</strong>
+        <%= @touring_route.start_date %>
+      </p>
+
+      <p>
+        <strong>End date:</strong>
+        <%= @touring_route.end_date %>
+      </p>
+        <div class="none">
+            <p>
+              <strong>Start lat:</strong>
+              <%= @touring_route.start_lat %>
+            </p>
+
+            <p>
+              <strong>Start lon:</strong>
+              <%= @touring_route.start_lon %>
+            </p>
+
+            <p>
+              <strong>End lat:</strong>
+              <%= @touring_route.end_lat %>
+            </p>
+
+            <p>
+              <strong>End lon:</strong>
+              <%= @touring_route.end_lon %>
+            </p>
+
+            <p>
+              <strong>Wp1 lat:</strong>
+              <%= @touring_route.wp1_lat %>
+            </p>
+
+            <p>
+              <strong>Wp1 lon:</strong>
+              <%= @touring_route.wp1_lon %>
+            </p>
+
+            <p>
+              <strong>Wp2 lat:</strong>
+              <%= @touring_route.wp2_lat %>
+            </p>
+
+            <p>
+              <strong>Wp2 lon:</strong>
+              <%= @touring_route.wp2_lon %>
+            </p>
+
+            <p>
+              <strong>Wp3 lat:</strong>
+              <%= @touring_route.wp3_lat %>
+            </p>
+
+            <p>
+              <strong>Wp3 lon:</strong>
+              <%= @touring_route.wp3_lon %>
+            </p>
+
+            <p>
+              <strong>Created at:</strong>
+              <%= @touring_route.created_at %>
+            </p>
+
+            <p>
+              <strong>Updated at:</strong>
+              <%= @touring_route.updated_at %>
+            </p>
+        </div>
+
+        <%= render 'comments/form', comment: @comment %>
+         <% @touring_route.comments.each do |comment| %>
         <p>
           <%= comment.id %> <span>:</span>
           <%= comment.comment %>
