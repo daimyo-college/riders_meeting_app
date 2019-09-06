@@ -20,13 +20,8 @@
         // クリックイベントを追加
         map.addListener('click', function(e) {
 
-
-        // getClickLatLng(e.latLng, map);
         // マーカーを設置
-        var marker = new google.maps.Marker({
-        position: e.latLng,
-        map: map
-        });
+        let marker = getClickLatLng(e.latLng, map);
 
         // チェックボタンの状態値でデータを表示
           let radio_btns = document.getElementsByName("RadioGroup");
@@ -74,16 +69,16 @@
       });
     }
 
-    // function getClickLatLng(lat_lng, map) {
-    //   // マーカーを設置
-    //   var marker = new google.maps.Marker({
-    //     position: lat_lng,
-    //     map: map
-    //   });
-
-      // 座標の中心をずらす
-      // map.panTo(lat_lng);
-    // }
+    function getClickLatLng(lat_lng, map) {
+      // マーカーを設置
+      var marker = new google.maps.Marker({
+        position: lat_lng,
+        map: map
+      });
+      return marker ;
+      座標の中心をずらす
+      map.panTo(lat_lng);
+    }
 
     function deleteMarkers(marker_d) {
 		  if(marker_d != null){
