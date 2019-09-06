@@ -1,5 +1,7 @@
 {
   "name": "riders_meeting_app",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.19.0"
+  }
 }

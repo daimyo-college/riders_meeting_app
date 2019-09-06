@@ -1,20 +1,48 @@
 <!DOCTYPE html>
 <html>
+
   <head>
+    <meta charset="utf-8">
     <title>RidersMeetingApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
 
   <body>
-    <%= link_to 'route', touring_routes_path %>
-    <%= link_to 'rider', riders_path %>
-    <%= link_to 'comment', comments_path %>
-    <%= yield %>
+   <header>
+      <p>RidersMeeting</p>
+      <nav>
+        <ul>
+          <li>
+          <%= link_to ("/touring_routes") do %>
+            <span class="fas fa-globe-asia fa-3x"></span>
+          <% end %>
+          </li>
+          <li>
+          <%= link_to ("/touring_routes/new") do %>
+            <span class="fas fa-plus fa-3x"></span>
+          <% end %>
+          </li>
+          <li>
+          <%= link_to ("/riders") do %>
+            <span class="fas fa-user-friends fa-3x"></span>
+          <% end %>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main> 
+      <%= yield %>
+    </main>
+   
   </body>
 </html>

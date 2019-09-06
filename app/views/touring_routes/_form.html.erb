@@ -1,3 +1,4 @@
+<div class="form">
 <%= form_with(model: touring_route, local: true) do |form| %>
   <% if touring_route.errors.any? %>
     <div id="error_explanation">
@@ -32,65 +33,84 @@
   </div>
 
 
-<%
-=begin
-%>
-  <div class="field">
-    <%= form.label :start_lat %>
-    <%= form.text_field :start_lat %>
-  </div>
+  <ul class="latlng">
+    <li>
+      <div class="field">
+        <div class="flex">
+          <%= radio_button_tag(:RadioGroup, "start") %>
+          <%= label_tag(:RadioGroup_start, "出発地点") %>
+        </div>
+        <div class="flex">
+          <%= form.label :start_lat %>
+          <%= form.text_field :start_lat %>
+          <%= form.label :start_lon %>
+          <%= form.text_field :start_lon %>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="field">
+        <div class="flex">
+          <%= radio_button_tag(:RadioGroup, "end") %>
+          <%= label_tag(:RadioGroup_end, "目的地") %>
+        </div>
+        <div class="flex">
+          <%= form.label :end_lat %>
+          <%= form.text_field :end_lat %>
+          <%= form.label :end_lon %>
+          <%= form.text_field :end_lon %>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="field">
+        <div class="flex">
+          <%= radio_button_tag(:RadioGroup, "wp1") %>
+          <%= label_tag(:RadioGroup_wp1, "経由地1") %>
+        </div>
+        <div class="flex">
+          <%= form.label :wp1_lat %>
+          <%= form.text_field :wp1_lat %>
+          <%= form.label :wp1_lon %>
+          <%= form.text_field :wp1_lon %>
+        </div>
+      </li>
+    <li>
+      <div class="field">
+        <div class="flex">
+          <%= radio_button_tag(:RadioGroup, "wp2") %>
+          <%= label_tag(:RadioGroup_wp2, "経由地2") %>
+        </div>
+        <div class="flex">
+          <%= form.label :wp2_lat %>
+          <%= form.text_field :wp2_lat %>
+          <%= form.label :wp2_lon %>
+          <%= form.text_field :wp2_lon %>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="field">
+        <div class="flex">
+          <%= radio_button_tag(:RadioGroup, "wp3") %>
+          <%= label_tag(:RadioGroup_wp3, "経由地3") %>
+        </div>
+        <div class="flex">
+          <%= form.label :wp3_lat %>
+          <%= form.text_field :wp3_lat %>
+          <%= form.label :wp3_lon %>
+          <%= form.text_field :wp3_lon %>
+        </div>
+      </div>
+    </li>
+  </ul>
 
-  <div class="field">
-    <%= form.label :start_lon %>
-    <%= form.text_field :start_lon %>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_lat %>
-    <%= form.text_field :end_lat %>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_lon %>
-    <%= form.text_field :end_lon %>
-  </div>
-
-  <div class="field">
-    <%= form.label :wp1_lat %>
-    <%= form.text_field :wp1_lat %>
-  </div>
-
-  <div class="field">
-    <%= form.label :wp1_lon %>
-    <%= form.text_field :wp1_lon %>
-  </div>
-
-  <div class="field">
-    <%= form.label :wp2_lat %>
-    <%= form.text_field :wp2_lat %>
-  </div>
-
-  <div class="field">
-    <%= form.label :wp2_lon %>
-    <%= form.text_field :wp2_lon %>
-  </div>
-
-  <div class="field">
-    <%= form.label :wp3_lat %>
-    <%= form.text_field :wp3_lat %>
-  </div>
-
-  <div class="field">
-    <%= form.label :wp3_lon %>
-    <%= form.text_field :wp3_lon %>
-  </div>
-
-  <div class="field">
+  <div class="field none">
     <%= form.label :created_at %>
     <%= form.datetime_select :created_at %>
   </div>
 
-  <div class="field">
+  <div class="field none">
     <%= form.label :updated_at %>
     <%= form.datetime_select :updated_at %>
   </div>
@@ -102,3 +122,4 @@
 =end
 %>
 <% end %>
+</div>
