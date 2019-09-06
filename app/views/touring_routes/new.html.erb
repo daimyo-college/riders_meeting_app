@@ -20,10 +20,7 @@
         // クリックイベントを追加
         map.addListener('click', function(e) {
 
-        // マーカーを設置
-        let marker = getClickLatLng(e.latLng, map);
-
-        // チェックボタンの状態値でデータを表示
+        // 座標ラジオボタンの状態値でマーカーを区別
           let radio_btns = document.getElementsByName("RadioGroup");
 
           for(var i = 0; i < radio_btns.length; i++){
@@ -32,31 +29,36 @@
               switch(i){
                 case 0:
                   deleteMarkers(routes.start);
-                  routes.start = marker;
+                  let marker_start = getClickLatLng(e.latLng, map,"S"); // マーカーを設置
+                  routes.start = marker_start;
                   $('#touring_route_start_lat').val(e.latLng.lat());
                   $('#touring_route_start_lon').val(e.latLng.lng());
                   break;
                 case 1:
                   deleteMarkers(routes.end);
-                  routes.end = marker;
+                  let marker_end = getClickLatLng(e.latLng, map,"E"); // マーカーを設置
+                  routes.end = marker_end;
                   $('#touring_route_end_lat').val(e.latLng.lat());
                   $('#touring_route_end_lon').val(e.latLng.lng());
                   break;
                 case 2:
                   deleteMarkers(routes.wp1);
-                  routes.wp1 = marker;
+                  let marker_wp1 = getClickLatLng(e.latLng, map,"1"); // マーカーを設置
+                  routes.wp1 = marker_wp1;
                   $('#touring_route_wp1_lat').val(e.latLng.lat());
                   $('#touring_route_wp1_lon').val(e.latLng.lng());
                   break;
                 case 3:
                   deleteMarkers(routes.wp2);
-                  routes.wp2 = marker;
+                  let marker_wp2 = getClickLatLng(e.latLng, map,"2"); // マーカーを設置
+                  routes.wp2 = marker_wp2;
                   $('#touring_route_wp2_lat').val(e.latLng.lat());
                   $('#touring_route_wp2_lon').val(e.latLng.lng());
                   break;
                 case 4:
                   deleteMarkers(routes.wp3);
-                  routes.wp3 = marker;
+                  let marker_wp3 = getClickLatLng(e.latLng, map,"3"); // マーカーを設置
+                  routes.wp3 = marker_wp3;
                   $('#touring_route_wp3_lat').val(e.latLng.lat());
                   $('#touring_route_wp3_lon').val(e.latLng.lng());
                   break;
@@ -69,11 +71,18 @@
       });
     }
 
-    function getClickLatLng(lat_lng, map) {
+    function getClickLatLng(lat_lng, map,char) {
       // マーカーを設置
       var marker = new google.maps.Marker({
         position: lat_lng,
-        map: map
+        map: map,
+         label: {
+       text: char,         //ラベル文字
+       color: '#fff',          //ラベル文字の色
+       fontFamily: 'sans-serif',  //フォント 
+       fontWeight: 'bold',        //フォントの太さ 
+       fontSize: '14px'           //フォントのサイズ 
+        } 
       });
       return marker ;
       座標の中心をずらす
