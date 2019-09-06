@@ -22,52 +22,50 @@
 
         // 座標ラジオボタンの状態値でマーカーを区別
           let radio_btns = document.getElementsByName("RadioGroup");
-
-          for(var i = 0; i < radio_btns.length; i++){
           
-            if(radio_btns[i].checked) {
-              switch(i){
-                case 0:
+              if(radio_btns[0].checked) {
                   deleteMarkers(routes.start);
                   let marker_start = getClickLatLng(e.latLng, map,"S"); // マーカーを設置
                   routes.start = marker_start;
+                  radio_btns[1].checked = true ;
                   $('#touring_route_start_lat').val(e.latLng.lat());
                   $('#touring_route_start_lon').val(e.latLng.lng());
-                  break;
-                case 1:
+              }
+              else if(radio_btns[1].checked) {
                   deleteMarkers(routes.end);
                   let marker_end = getClickLatLng(e.latLng, map,"E"); // マーカーを設置
                   routes.end = marker_end;
+                  radio_btns[2].checked = true ;
                   $('#touring_route_end_lat').val(e.latLng.lat());
                   $('#touring_route_end_lon').val(e.latLng.lng());
-                  break;
-                case 2:
+             }
+              else if(radio_btns[2].checked) {
                   deleteMarkers(routes.wp1);
                   let marker_wp1 = getClickLatLng(e.latLng, map,"1"); // マーカーを設置
                   routes.wp1 = marker_wp1;
+                  radio_btns[3].checked = true ;
                   $('#touring_route_wp1_lat').val(e.latLng.lat());
                   $('#touring_route_wp1_lon').val(e.latLng.lng());
-                  break;
-                case 3:
+             }
+              else if(radio_btns[3].checked) {
                   deleteMarkers(routes.wp2);
                   let marker_wp2 = getClickLatLng(e.latLng, map,"2"); // マーカーを設置
                   routes.wp2 = marker_wp2;
+                  radio_btns[4].checked = true ;
                   $('#touring_route_wp2_lat').val(e.latLng.lat());
                   $('#touring_route_wp2_lon').val(e.latLng.lng());
-                  break;
-                case 4:
+             }
+              else if(radio_btns[4].checked) {
                   deleteMarkers(routes.wp3);
                   let marker_wp3 = getClickLatLng(e.latLng, map,"3"); // マーカーを設置
                   routes.wp3 = marker_wp3;
+                  radio_btns[0].checked = true ;
                   $('#touring_route_wp3_lat').val(e.latLng.lat());
                   $('#touring_route_wp3_lon').val(e.latLng.lng());
-                  break;
-                default:
-                  console.log(i,"check_btn error");
-                break;
               }
-            }
-          } 
+              else{
+                  console.log(i,"check_btn error");
+              }
       });
     }
 
