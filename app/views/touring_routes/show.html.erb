@@ -122,10 +122,6 @@
 function initMap(routes) {
     // ルート検索の条件
 
-    console.log("wp1",routes.data.wp1_lat,routes.data.wp1_lon)
-    console.log("wp2",routes.data.wp2_lat,routes.data.wp2_lon)
-    console.log("wp4",routes.data.wp3_lat,routes.data.wp3_lon)
-
     let way_points = []
     if (routes.data.wp1_lat!== null) {
         let locations = {location: new google.maps.LatLng(routes.data.wp1_lat,routes.data.wp1_lon)}
