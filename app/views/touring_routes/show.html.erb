@@ -90,7 +90,6 @@
         <%= render 'comments/form', comment: @comment %>
          <% @touring_route.comments.each do |comment| %>
         <p>
-          <%= comment.id %> <span>:</span>
           <%= comment.comment %>
         </p>
       <% end %>
