@@ -4,63 +4,6 @@
   }
 </style>
 <p id="notice"><%= notice %></p>
-<<<<<<< HEAD
-
-<h3>jsonからgetしたデータ(背景網掛け)</h3>
-<p>あとからマップと合わせてレンダリングする</p>
-<p>表示していないデータも{{}}でくくってroute.カラム名で取得可能</p>
-<div id="app" class="jsonData">
-  <strong>Touring name:</strong>
-  <p>{{ route.touring_name }}</p>
-  <strong>Touring desc:</strong>
-  <p>{{ route.touring_desc }}</p>
-  <strong>Start date:</strong>
-  <p>{{ route.start_date }}</p>
-  <strong>End date:</strong>
-  <p>{{ route.end_date }}</p>
-  <strong>Start lat:</strong>
-  <p>{{ route.start_lat }}</p>
-  <strong>Start lon:</strong>
-  <p>{{ route.start_lon }}</p>
-  <strong>End lat:</strong>
-  <p>{{ route.end_lat }}</p>
-  <strong>End lon:</strong>
-  <p>{{ route.end_lon }}</p>
-</div>
-
-<%= render 'comments/form', comment: @comment %>
-
-<% @touring_route.comments.each do |comment| %>
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.comment %>
-  </p>
-<% end %>
-
-<%= link_to 'Edit', edit_touring_route_path(@touring_route) %> |
-<%= link_to 'Back', touring_routes_path %>
-
-<script>
-(async () => {
-  new Vue({
-    el: "#app",
-    data: () => ({
-      // Vueに返す値を準備
-      route: []
-    }),
-    async beforeMount() {
-      const url = `/touring_routes/<%= @touring_route.id %>.json`;
-      // 画面の準備をする前に Axios で JSON を取得する
-      const res = await axios.get(url);
-      // 取得した結果をthis.routes代入
-      console.log(res);
-      console.log(res.data);
-      this.route = res.data;
-    }
-  });
-})();
-</script>
-=======
 <h1>Touring Route</h1>
 <div class="touring_show">
     <div>
@@ -235,4 +178,3 @@ function initMap(routes) {
 }
 </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY']%>" async defer></script>
->>>>>>> master
