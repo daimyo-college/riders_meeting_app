@@ -25,72 +25,85 @@
           zoom: 9,
           center: {lat: 33.31478181566308, lng: 130.50810970427096}
         });
- 
+
       // ツーリングルートのオブジェクト定義
         let routes ={};
-
         // クリックイベントを追加
         map.addListener('click', function(e) {
-          getClickLatLng(e.latLng, map);
 
-        // チェックボタンの状態値でデータを表示
+        // 座標ラジオボタンの状態値でマーカーを区別
           let radio_btns = document.getElementsByName("RadioGroup");
-
-          for(var i = 0; i < radio_btns.length; i++){
           
-            if(radio_btns[i].checked) {
-              switch(i){
-                case 0:
+              if(radio_btns[0].checked) {
+                  deleteMarkers(routes.start);
+                  let marker_start = getClickLatLng(e.latLng, map,"S"); // マーカーを設置
+                  routes.start = marker_start;
+                  radio_btns[1].checked = true ;
                   $('#touring_route_start_lat').val(e.latLng.lat());
-                  routes.start_lat = e.latLng.lat();
                   $('#touring_route_start_lon').val(e.latLng.lng());
-                  routes.start_lng = e.latLng.lng();
-                  break;
-                case 1:
-                  $('#touring_route_end_lat').val(e.latLng.lat());
-                  routes.end_lat = e.latLng.lat();
-                  $('#touring_route_end_lon').val(e.latLng.lng());
-                  routes.end_lng = e.latLng.lng();
-                  break;
-                case 2:
-                  $('#touring_route_wp1_lat').val(e.latLng.lat());
-                  routes.wp1_lat = e.latLng.lat();
-                  $('#touring_route_wp1_lon').val(e.latLng.lng());
-                  routes.wp1_lng = e.latLng.lng();
-                  break;
-                case 3:
-                  $('#touring_route_wp2_lat').val(e.latLng.lat());
-                  routes.wp2_lat = e.latLng.lat();
-                  $('#touring_route_wp2_lon').val(e.latLng.lng());
-                  routes.wp2_lng = e.latLng.lng();
-                  break;
-                case 4:
-                  $('#touring_route_wp3_lat').val(e.latLng.lat());
-                  routes.wp3 = e.latLng.lat();
-                  $('#touring_route_wp3_lon').val(e.latLng.lng());
-                  routes.wp3_lng = e.latLng.lng();
-                  break;
-                default:
-                  console.log(i,"check_btn error");
-                break;
               }
-            }
-          } 
+              else if(radio_btns[1].checked) {
+                  deleteMarkers(routes.end);
+                  let marker_end = getClickLatLng(e.latLng, map,"E"); // マーカーを設置
+                  routes.end = marker_end;
+                  radio_btns[2].checked = true ;
+                  $('#touring_route_end_lat').val(e.latLng.lat());
+                  $('#touring_route_end_lon').val(e.latLng.lng());
+             }
+              else if(radio_btns[2].checked) {
+                  deleteMarkers(routes.wp1);
+                  let marker_wp1 = getClickLatLng(e.latLng, map,"1"); // マーカーを設置
+                  routes.wp1 = marker_wp1;
+                  radio_btns[3].checked = true ;
+                  $('#touring_route_wp1_lat').val(e.latLng.lat());
+                  $('#touring_route_wp1_lon').val(e.latLng.lng());
+             }
+              else if(radio_btns[3].checked) {
+                  deleteMarkers(routes.wp2);
+                  let marker_wp2 = getClickLatLng(e.latLng, map,"2"); // マーカーを設置
+                  routes.wp2 = marker_wp2;
+                  radio_btns[4].checked = true ;
+                  $('#touring_route_wp2_lat').val(e.latLng.lat());
+                  $('#touring_route_wp2_lon').val(e.latLng.lng());
+             }
+              else if(radio_btns[4].checked) {
+                  deleteMarkers(routes.wp3);
+                  let marker_wp3 = getClickLatLng(e.latLng, map,"3"); // マーカーを設置
+                  routes.wp3 = marker_wp3;
+                  radio_btns[0].checked = true ;
+                  $('#touring_route_wp3_lat').val(e.latLng.lat());
+                  $('#touring_route_wp3_lon').val(e.latLng.lng());
+              }
+              else{
+                  console.log(i,"check_btn error");
+              }
       });
     }
 
-    function getClickLatLng(lat_lng, map) {
-
+    function getClickLatLng(lat_lng, map,char) {
       // マーカーを設置
       var marker = new google.maps.Marker({
         position: lat_lng,
-        map: map
+        map: map,
+         label: {
+       text: char,         //ラベル文字
+       color: '#fff',          //ラベル文字の色
+       fontFamily: 'sans-serif',  //フォント 
+       fontWeight: 'bold',        //フォントの太さ 
+       fontSize: '14px'           //フォントのサイズ 
+        } 
       });
-
-      // 座標の中心をずらす
-  
+      return marker ;
+      座標の中心をずらす
       map.panTo(lat_lng);
     }
+
+    function deleteMarkers(marker_d) {
+		  if(marker_d != null){
+		    marker_d.setMap(null);
+		  }
+		  marker_d = null;
+	}
 
   </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY']%>&callback=initMap" async defer></script>
