@@ -3,25 +3,33 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /*div要素全体にリンクをつけるために必要な要素*/
-.touring_new,.touring_show{
+.touring_new,
+.touring_show {
   display: flex;
   justify-content: space-between;
 }
 .linkbox {
-    position: relative;
+  position: relative;
+  border: solid 2px #000000;
+  background: rgba(255, 255, 255, 0.7);
 }
 .linkbox a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height:100%;
-    width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
-/* 見た目をわかりやすくするための設定*/
-.linkbox {
-    border: solid 2px #000000;
+
+.linkbox a:hover {
+  /* マウスオーバー時に色変更*/
+  opacity: 0.1;
+  background-color: #777777;
 }
-.linkbox a:hover{/* マウスオーバー時に色変更*/
-    opacity: 0.1;
-    background-color: #777777;
+.list {
+  margin-left: 2rem;
+  color: #272727;
+}
+.ssmall {
+  font-size: 1.3rem;
 }
