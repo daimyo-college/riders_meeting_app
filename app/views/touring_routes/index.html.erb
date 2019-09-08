@@ -1,15 +1,23 @@
-
+<style>
+body {
+  background: url("/bgimage.jpg") no-repeat;
+  background-size: cover;
+}
+.white{
+  color:#777777;
+}
+</style>
 <p id="notice"><%= notice %></p>
 
-<h1>Touring Routes</h1>
+<h1>Touring リスト</h1>
 
 <div id="app">
-  <h1>ルート一覧</h1>
   <ul>
     <div v-for="v in routes" class="linkbox" style="border: solid 1px; margin: 3px; border-radius: 1rem;">
-      <h4 style="margin-left: 2rem;">{{v.touring_name}}</h4>
+      <h3 class="list">{{v.touring_name}}</h3>
       <a v-bind:href="'/touring_routes/' + v.id"></a>
-      <p style="margin-left: 2rem;">{{v.touring_desc}}</p>
+      <p class="list">{{v.touring_desc}}</p>
+      <p class="list small">スタート: {{v.start_date}} ~ エンド: {{v.end_date}}</p>
     </div>
   </ul>
 </div>
