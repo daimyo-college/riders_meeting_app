@@ -29,7 +29,8 @@ body{
 	-webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
    margin: 0px;
-  background-image: url("/bgimage.jpg");
+  background-image: url("/rider.jpg");
+  /* background-image: url("/bgimage.jpg"); */
   background-size: cover;
 }
 main{
