@@ -1,4 +1,5 @@
 class TouringRoutesController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :new, :show, :edit, :update, :destroy]
   before_action :set_touring_route, only: [:show, :edit, :update, :destroy]
 
   # GET /touring_routes
