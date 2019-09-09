@@ -53,13 +53,11 @@
         <%= link_to 'ログイン', new_user_session_path %>
       <% end %>
     </nav>
-
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      
     </header>
 
     <main> 
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       <%= yield %>
     </main>
    
