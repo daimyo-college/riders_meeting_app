@@ -38,6 +38,25 @@
           </li>
         </ul>
       </nav>
+
+      <nav>
+      <!-- user_signed_in? はユーザがログインしているか調べるdeviseのHelperメソッド -->
+      <% if user_signed_in? %> 
+        <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
+        <!-- *_path はUserモデルを作成したときに、
+        deviseにより自動で作成されてますので、rake routesで確認できます -->
+        Logged in as <strong><%= current_user.email %></strong>.  
+        <%= link_to 'Acount', edit_user_registration_path %> |
+        <%= link_to 'Sign Out', destroy_user_session_path,method: :delete %>
+      <% else %>
+        <%= link_to 'Sign Up', new_user_registration_path %> |
+        <%= link_to 'Sign In', new_user_session_path %>
+      <% end %>
+    </nav>
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      
     </header>
 
     <main> 
