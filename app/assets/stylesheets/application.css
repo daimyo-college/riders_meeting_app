@@ -30,8 +30,8 @@ body{
   -moz-osx-font-smoothing: grayscale;
    margin: 0px;
   background-image: url("/rider.jpg");
-  /* background-image: url("/bgimage.jpg"); */
   background-size: cover;
+  background-repeat: no-repeat; 
 }
 main{
 margin: 100px 40px 0 40px;
