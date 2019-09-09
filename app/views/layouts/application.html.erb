@@ -47,10 +47,10 @@
         deviseにより自動で作成されてますので、rake routesで確認できます -->
         Logged in as <strong><%= current_user.email %></strong>.  
         <%= link_to 'Acount', edit_user_registration_path %> |
-        <%= link_to 'Sign Out', destroy_user_session_path,method: :delete %>
+        <%= link_to 'ログアウト', destroy_user_session_path,method: :delete %>
       <% else %>
-        <%= link_to 'Sign Up', new_user_registration_path %> |
-        <%= link_to 'Sign In', new_user_session_path %>
+        <%= link_to 'サインアップ', new_user_registration_path %> |
+        <%= link_to 'ログイン', new_user_session_path %>
       <% end %>
     </nav>
 
