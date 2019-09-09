@@ -2,7 +2,7 @@
 
 <div class="touring_new">
   <%= render 'form', touring_route: @touring_route %>
-  <div id="map_new" style=" width: 800px; height: 500px"></div>
+  <div id="map_new" style=" width: 600px; height: 500px"></div>
 </div>
 <%= link_to 'Back', touring_routes_path %>
 
@@ -12,9 +12,19 @@
       // マップの初期化
         var map = new google.maps.Map(document.getElementById('map_new'), {
           zoom: 9,
-          center: {lat: 33.31478181566308, lng: 130.50810970427096}
+          center: {lat: 33.31478181566308, lng: 130.50810970427096},
+          styles:
+                  [
+                    {
+                      "elementType": "geometry.fill",
+                      "stylers": [
+                        {
+                          "saturation": -80
+                        }
+                      ]
+                    }
+                  ]
         });
-
       // ツーリングルートのオブジェクト定義
         let routes ={};
         // クリックイベントを追加
