@@ -149,7 +149,18 @@ function initMap(routes) {
     // マップの生成
     var map = new google.maps.Map(document.getElementById("map"), {
         center: new google.maps.LatLng(view_center_lat,view_center_lon), // マップの中心
-        zoom: 9 // ズームレベル
+        zoom: 9, // ズームレベル
+        styles:
+        [
+          {
+            "elementType": "geometry.fill",
+            "stylers": [
+              {
+                "saturation": -80
+              }
+            ]
+          }
+        ]
     });
 
     var d = new google.maps.DirectionsService(); // ルート検索オブジェクト
