@@ -26,6 +26,8 @@ class TouringRoutesController < ApplicationController
   # POST /touring_routes
   # POST /touring_routes.json
   def create
+    p "**** dubug ****"
+    p touring_route_params
     @touring_route = TouringRoute.new(touring_route_params)
 
     respond_to do |format|
