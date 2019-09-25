@@ -26,7 +26,12 @@ class TouringRoutesController < ApplicationController
   # POST /touring_routes
   # POST /touring_routes.json
   def create
+    p "**** dubug ****"
+
     @touring_route = TouringRoute.new(touring_route_params)
+
+    # ログインユーザをセット
+    @touring_route.user_id = current_user.id
 
     respond_to do |format|
       if @touring_route.save
