@@ -29,6 +29,8 @@ class CommentsController < ApplicationController
     p "**** dubug ****"
     p comment_params
     @comment = Comment.new(comment_params)
+    # ログインユーザをセット
+    @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment.touring_route, notice: 'Comment was successfully created.' }
