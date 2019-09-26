@@ -93,6 +93,7 @@
         <%= render 'comments/form', comment: @comment %>
          <% @touring_route.comments.each do |comment| %>
         <p>
+          <%= comment.user_id %>
           <%= comment.comment %>
         </p>
       <% end %>
