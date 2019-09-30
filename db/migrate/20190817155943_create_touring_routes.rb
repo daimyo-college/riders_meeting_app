@@ -17,7 +17,7 @@ class CreateTouringRoutes < ActiveRecord::Migration[5.2]
       t.integer :wp3_lon
       t.datetime :created_at
       t.datetime :updated_at
-      t.references :rider, foreign_key: { to_table: :riders }
+      # t.references :rider, foreign_key: true
 
       t.timestamps
     end

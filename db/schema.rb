@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_09_014400) do
+ActiveRecord::Schema.define(version: 2019_09_10_005147) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "comment"
     t.bigint "touring_route_id"
-    t.bigint "touring_route_rider_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["touring_route_id"], name: "index_comments_on_touring_route_id"
-    t.index ["touring_route_rider_id"], name: "index_comments_on_touring_route_rider_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "riders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 2019_09_09_014400) do
     t.float "wp3_lon", limit: 53
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "rider_id"
-    t.index ["rider_id"], name: "index_touring_routes_on_rider_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_touring_routes_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -65,6 +65,4 @@ ActiveRecord::Schema.define(version: 2019_09_09_014400) do
   end
 
   add_foreign_key "comments", "touring_routes"
-  add_foreign_key "comments", "touring_routes", column: "touring_route_rider_id"
-  add_foreign_key "touring_routes", "riders"
 end

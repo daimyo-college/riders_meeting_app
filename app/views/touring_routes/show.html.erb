@@ -1,6 +1,10 @@
 <h1>Touring Route</h1>
 <div class="touring_show">
     <div>
+      <p>
+        <strong>User email:</strong>
+        <%= @touring_route.user.email %>
+      </p>
       <p class="none">
         <strong>Touring id:</strong>
         <%= @touring_route.id %>
@@ -89,6 +93,7 @@
         <%= render 'comments/form', comment: @comment %>
          <% @touring_route.comments.each do |comment| %>
         <p>
+          <%= comment.user_id %>
           <%= comment.comment %>
         </p>
       <% end %>
